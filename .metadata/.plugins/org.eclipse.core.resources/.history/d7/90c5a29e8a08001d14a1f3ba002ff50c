@@ -1,0 +1,5 @@
+package com.ssafy.live2.extend.person;
+
+public class Person {
+
+}

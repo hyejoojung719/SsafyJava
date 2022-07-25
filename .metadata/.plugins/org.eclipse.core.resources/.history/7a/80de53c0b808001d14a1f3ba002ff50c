@@ -1,0 +1,37 @@
+package com.ssafy.live2.modifier.singleton;
+
+class SingletonClass{
+    // TODO:SingletonClass에 Singleton Design Pattern을 적용하시오.
+    
+	// stateless 헌 쿨랴수 - 상태를 가지지 않고 기능만~~
+	private static SingletonClass() {} // public -> private로 변경하자!
+	
+	private SingletonClass sc = new SingletonClass(); // 여기서만 이걸 쓸 수 있다.
+	
+	// 이제 getter가 필요
+	public static SingletonClass getSingletonClass() {
+		return sc; // 이런식으로 외부 클래스에서도 쓸 수 있다. 
+	}
+	
+	// END:
+    public void sayHello() {
+      System.out.println("Hello");
+    }
+    
+  }
+
+  public class SingletonTest {
+    public static void main(String[] args) {
+      // TODO:SingletonClass를 사용해보세요. 
+    	/*
+    	SingletonClass sc = new SingletonClass();
+    	sc.sayHello();
+    	
+    	SingletonClass sc2 = new SingletonClass();
+    	sc2.sayHello();
+    	*/ // 메모리에 쓸 데 없이 객체가 생성 돼서 불편하다!
+    	
+    	
+      // END:
+    }
+  }

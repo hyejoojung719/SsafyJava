@@ -1,0 +1,26 @@
+package com.ssafy.live3.inter;
+
+// cf. 강제성
+public class IronMan implements Heroable{
+
+	int weaponDamage = 100;
+	
+	@Override
+	public int fire() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void changeShape(boolean isHeroMode) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void upgrade() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

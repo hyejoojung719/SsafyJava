@@ -1,0 +1,28 @@
+package com.ssafy.live2.extend.person;
+
+public class Person {
+	String name = "피터파커";
+	
+	// 생성자 추가! -> 얘를 만들면 default constructor가 사라짐! -> 따라서 따로 만들어주면 되긴 함
+	Person(String name){
+		this.name = name;
+	}
+	
+	void eat() {
+		System.out.println("냠냠");
+	}
+	
+	void jump() {
+		System.out.println("두 다리로 폴짝!!");
+	}
+	
+	// 메소드 오버로딩 -> 추가 적재
+	void jump(String option) {
+
+	}
+	
+	@Override
+	public String toString() {
+		return "Person: , name: " + this.name; 
+	}
+}

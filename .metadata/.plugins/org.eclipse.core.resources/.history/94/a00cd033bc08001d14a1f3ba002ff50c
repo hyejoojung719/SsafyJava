@@ -1,0 +1,10 @@
+package com.ssafy.live2.poly;
+
+import com.ssafy.live2.extend.person.SpiderMan;
+import com.ssafy.live2.extend.person.SpiderManTest;
+
+public class PolySpiderTest {
+	public static void main(String[] args) {
+		SpiderMan sman = new SpiderManTest("피터파커", false);
+	}
+}

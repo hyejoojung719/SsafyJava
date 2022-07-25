@@ -1,0 +1,15 @@
+package com.ssafy.live2.extend.person;
+
+public class SpiderMan extends Person {
+	boolean isSpider;
+	Spider spider = new Spider(); // 따라서 객체를 만들어줘야 한다.
+	
+	void fireWeb() {
+		if(isSpider) {
+			// null poinder => nul.xx 하고 있는 것
+			spider.fireWeb();
+		}else {
+			System.out.println("거미줄을 쏘... 어떻게 쏘지?");
+		}
+	}
+}

@@ -1,0 +1,10 @@
+package com.ssafy.live3.generic.box;
+
+public class NumberBox<T> { // T는 Number 또는 Number를 상속받는 녀석이다.
+	public void addSome(T...ts) {
+		double sum = 0;
+		for(T t : ts) {
+			
+		}
+	}
+}

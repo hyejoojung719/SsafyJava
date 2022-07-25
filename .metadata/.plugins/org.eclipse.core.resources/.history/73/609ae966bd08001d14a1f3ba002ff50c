@@ -1,0 +1,21 @@
+package com.ssafy.live2.poly;
+
+import com.ssafy.live2.extend.person.Person;
+import com.ssafy.live2.extend.person.SpiderMan;
+
+public class PolySpiderTest {
+	public static void main(String[] args) {
+		SpiderMan sman = new SpiderMan("피터파커", false);
+		
+		// 다형성
+		SpiderMan sman2 = sman;
+		Person person = sman;
+		Object obj =  person;
+		
+		Object[] objs = new Object[4];
+		objs[0] = sman;
+		objs[1] = "Hello";
+		objs[2] = objs;
+		objs[3] = 1; // 기본형이었는데 왜 되지..?
+	}
+}

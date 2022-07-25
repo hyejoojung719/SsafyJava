@@ -1,0 +1,18 @@
+package com.ssafy.live2.extend.person;
+
+public class Person {
+	String name;
+	
+	void eat() {
+		System.out.println("냠냠");
+	}
+	
+	void jump() {
+		System.out.println("두 다리로 폴짝!!");
+	}
+	
+	// 메소드 오버로딩 -> 추가 적재
+	void jump(String option) {
+
+	}
+}
