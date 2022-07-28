@@ -5,6 +5,7 @@ import com.ssafy.live2.extend.person.SpiderMan;
 
 public class PolySpiderTest {
 	public static void main(String[] args) {
+		
 		SpiderMan sman = new SpiderMan("피터파커", true);
 		
 		// 다형성
@@ -22,8 +23,12 @@ public class PolySpiderTest {
 		objs[1] = "Hello";
 		objs[2] = objs;
 		objs[3] = 1; // 기본형이었는데 왜 되지..? -> autoboxing
-		// int가 아닌 Integer로 맴핑 돼서 들어감
-	
+		// int가 아닌 Integer로 맵핑 돼서 들어감
+		
+		for(Object o : objs) {
+			System.out.println(o.getClass().getName());
+			// 객체 타입 확인 java.lang.Integer(래퍼클래스)
+		}
 		
 		SpiderMan fromObjArray = (SpiderMan)objs[0];
 		//fromObjArray.fireWeb(); (앞에 public 붙여야 오류 사라짐..)
@@ -37,9 +42,6 @@ public class PolySpiderTest {
 		}
 		
 		
-		for(Object o : objs) {
-			System.out.println(o.getClass().getName());
-			// 객체 타입 확인
-		}
+		
 	}
 }

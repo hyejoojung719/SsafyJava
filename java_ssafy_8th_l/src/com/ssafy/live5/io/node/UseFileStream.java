@@ -11,7 +11,8 @@ public class UseFileStream {
         UseFileStream st = new UseFileStream();
         st.testFile();
 
-        // System.out.printf("buffer size: %d, time: %d%n", 100, st.fileMove(100));
+        // 버퍼 크기에 따른 속도
+         System.out.printf("buffer size: %d, time: %d%n", 100, st.fileMove(100));
         // System.out.printf("buffer size: %d, time: %d%n", 1000, st.fileMove(1000));
         // System.out.printf("buffer size: %d, time: %d%n", 10000, st.fileMove(10000));
         // System.out.printf("buffer size: %d, time: %d%n", 100000, st.fileMove(100000));
@@ -24,18 +25,33 @@ public class UseFileStream {
         File temp = new File("c:\\Temp");
         System.out.printf("존재? %b, 디렉토리? %b%n", temp.exists(), temp.isDirectory());
 
-        // 상대경로
+        // 상대경로: .은 현재 내 위치를 의미
+        // 그럼 현재 경로는 어디지??!
         File current = new File(".");
         System.out.printf("여기는 어디? %s%n", current.getCanonicalPath());
         
-        // 상대경로의 기준은 java program을 실행하는 위치(소스와 무관)
+        // 상대경로의 기준은 java program을 실행하는 위치(소스와 무관)!!! 
+        // 즉 자바라는 명령어를 실행시키는 위치를 말함!!
+        // . 이라는게 프로젝트 루트를 말하는게 아님!
         //d:\>java -cp .;c:\SSAFY\workspace\java\live\bin com.ssafy.live5.io.node.UseFileStream
         //c:\SSAFY\workspace\java\live\bin>java com.ssafy.live5.io.node.UseFileStream
         
         // TODO: readme.txt에 해당하는 File 객체를 만들어 보자.
-        //  프로젝트와 무관하게 파일을 찾을
-        //  프로젝트 내부에서 파일을 찾을
-        //  특정 클래스 기준으로 파일을 찾을
+        //  프로젝트와 무관하게 파일을 찾을 떼 - 절대경로로 찾기 - 해당 파일 properties 들어가서 location 정보 복사
+        File readMe = new File("C:\\SSAFY\\learning_java\\java_ssafy_8th_l\\src\\com\\ssafy\\live5\\io\\node\\readme.txt");
+//        System.out.println("readme.txt:  " + readMe.exists());
+        
+        //  프로젝트 내부에서 파일을 찾을 때 - 상대 경로
+        // File readMe2 = new File(".\\src\\com\\ssafy\\live5\\io\\node\\readme.txt"); // .을 기준을 출발
+        // 그러나 위와 같은 방법으로 src경로를 가지고 작업을 하면 위험 좀더 다듬어 보자!
+        // src로 작업한 것들은 bin 폴더로 가고있따!
+        File readMe2 = new File(".\\bin\\com\\ssafy\\live5\\io\\node\\readme.txt"); // .을 기준을 출발
+        // 그러나 상대경로는 자바를 호출하는 경로이기때문에 그때그떄 달라진다는 한계점이 있다.
+        
+        //  특정 클래스 기준으로 파일을 찾을 때
+        File readMe3 = new File(UseFileStream.class.getResource("readme.txt").getFile());
+        System.out.println("readme.txt:  " + readMe3.exists());
+        
         // END:
     }
 
@@ -45,6 +61,17 @@ public class UseFileStream {
         File src = new File("c:\\ssafy\\eclipse-jee-2018-09-win32-x86_64.zip");
         File target = new File("c:\\Temp\\eclipse.zip");
         // TODO: bufferSize 크기의 byte []을 이용해서 src를 target에 복사하시오.
+        try(FileInputStream fin = new FileInputStream(src);
+                FileOutputStream fout = new FileOutputStream(target);) {
+        	byte[] buffer = new byte[bufferSize];
+        	int read = 0;
+        	while((read = fin.read(buffer))>0) {
+        		fout.write(buffer,0,read); // buffer에 있는 내용을 0부터 읽어들이 갯수까지만 쓰겠다.
+        	}
+        }catch(IOException e) {
+        	e.printStackTrace();
+        }
+       
         // END:
         return System.currentTimeMillis() - start;
     }
