@@ -2,6 +2,7 @@ package com.ssafy.live4.collection.map;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 
@@ -9,9 +10,9 @@ public class MapTest {
     Map<String, String> hMap = new HashMap<>();
 
     private void addMethod() {
-        System.out.println("추가 성공?: " + hMap.put("andy", "1234"));
+        System.out.println("추가 성공?: " + hMap.put("andy", "1234")); // null
         // 동일한 키의 사용 결과는?
-        System.out.println("추가 성공?: " + hMap.put("andy", "4567"));
+        System.out.println("추가 성공?: " + hMap.put("andy", "4567")); // 1234
         hMap.put("kate", "9999");
         // 기존에 해당 키에 대한 값이 없을 때만 추가하기
         hMap.putIfAbsent("kate", "1234");
@@ -24,17 +25,36 @@ public class MapTest {
 
     private void retrieveMethod() {
         // TODO: kate의 전화번호가 있나요?
+    	System.out.println("kate의 전화번호가 있는가? "+hMap.containsKey("kate"));
+    	
         // END:
 
         // TODO: map이 가지고 있는 key와 거기에 연결된 value를 출력하시오.
+    	// KeySet()을 통해 key값을 가져오기 
+    	Set<String> keys = hMap.keySet();
+    	for(String key: keys) {
+    		System.out.printf("key: %s, value: %s%n", key, hMap.get(keys));
+    	}
+    	
         // END:
 
         // TODO: 값이 4567인 사람의 이름은?
+    	Set<Entry<String, String>> entrySet = hMap.entrySet();
+    	for(Entry<String, String> entry : entrySet) {
+    		String key = entry.getKey();
+    		String value = entry.getValue();
+    		
+    		if(value.equals("4567")) System.out.printf("번호가 4567인 사람 찾음 : %s%n", key);
+    	}
+    	
+    	
         // END:
     }
 
     private void removeMethod() {
         // TODO: andy의 자료를 삭제하고 출력하시오.
+    	hMap.remove("andy"); // 삭제될 때 해당 키의 값이 나옴
+    	System.out.println("andy가 삭제됨 " + hMap);
         // END:
     }
 

@@ -14,6 +14,17 @@ public class ListDeleteTest {
         }
         System.out.println("전체: " + nums);
         // TODO: 3의 배수인 요소들을 삭제해보자.
+//        for(int i = 0; i < nums.size(); i++) {
+//        	if(i%3==0) {
+//        		nums.remove(i);
+//        	}
+//        }
+        for(int i = 0; i < nums.size(); i++) {
+        	if(nums.get(i) > 5) {
+        		nums.remove(i);
+        		i--; // i--를 해줘야 건너뛰는 거 없이 다 된다.
+        	}
+        }
         // END:
         System.out.println("3의 배수 삭제 후: " + nums);
 

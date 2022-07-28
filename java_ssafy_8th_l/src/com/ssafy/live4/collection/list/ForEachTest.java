@@ -1,6 +1,7 @@
 package com.ssafy.live4.collection.list;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -17,11 +18,19 @@ public class ForEachTest {
         // 다음 iteration에서 nums의 개수가 변경되면 오류
         for(Integer num: nums) {
             if(num%2==0) {
-                nums.add(num*num);
-                //nums.remove(num);
+//                nums.add(num*num);
+                nums.remove(num);
                 break;
             }
         }       
         System.out.println("삭제 \t: "+nums);        
+        
+        Iterator<Integer> itr = nums.iterator();
+        
+        while(itr.hasNext()) {
+        	// 다음 값이 들어 있으면
+        	Integer num = itr.next();
+        	System.out.println(num);
+        }
     }
 }
