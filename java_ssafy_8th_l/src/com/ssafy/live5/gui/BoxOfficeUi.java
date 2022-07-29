@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -71,6 +72,15 @@ public class BoxOfficeUi extends JFrame {
         });
 
         // TODO:테이블에서 발생하는 click event 처리를 위한 listener 등록
+        table.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		int row = table.getSelectedRow(); // 어떤 row를 선택했는지 알려줘
+        		// table은 해당 행에 있는 정보가 뭔지 모델한테 따로 물어봐야함
+        		String name = model.getValueAt(row, 1).toString();
+        		JOptionPane.showMessageDialog(BoxOfficeUi.this, "선택된 영화 정보 : " + name);
+        	}
+		});
         // END:
     }
 

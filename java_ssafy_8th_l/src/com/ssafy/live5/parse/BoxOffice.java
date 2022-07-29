@@ -3,9 +3,12 @@ package com.ssafy.live5.parse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+// rnum을 받아줄 필드가 없기 때문에 오류 발생 따라서 어노테이션 추가
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class BoxOffice {
     private Integer rank; // 등수
     private String movieNm; // 영화제목
@@ -47,6 +50,13 @@ public class BoxOffice {
     public Date toDate(String date) {
         Date dateObj = null;
         // TODO: 문자열 형태의 날짜를 Date로 변환해서 반환하시오.
+        // 2021-01-01
+        try {
+        	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            return format.parse(date);
+		} catch (ParseException e) {
+			// TODO: handle exception
+		}
         // END:
         return dateObj;
     }
